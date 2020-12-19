@@ -32,7 +32,7 @@
                 <div>
                     <button onclick="login()">Login</button>
                     <button onclick="getBudget()">Get Budget</button>
-                    <button onclick="getSignup()">Settings</button>
+                    <button onclick="getSignup()">Sign up</button>
                 </div>
             </main>
         </div>
@@ -81,7 +81,7 @@
                 }
             }).then(res => {
                 if (res && res.data && res.data.success) {
-                    document.querySelector('h1.row').innerHTML = 'Sign up';
+                    document.querySelector('h1.row').innerHTML = 'Signup';
                     document.querySelector('main').innerHTML = res.data.myContent;
                 }
             });
