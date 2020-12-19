@@ -60,7 +60,7 @@
         var page ="";
         function getBudget() {
             const token = localStorage.getItem('jwt');
-            axios.get('/Budget', {
+            axios.get('/api/gbudget', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -70,7 +70,7 @@
                     document.querySelector('main').innerHTML = res.data.myContent;
                 }
             });
-            history.pushState(page, "Budget", '/Budget');
+            history.pushState(page, "gbudget", '/api/gbudget');
         }
 
         function getSettings() {
@@ -94,7 +94,6 @@
             getBudget();
             }
         }
-        //onLoad();
     </script>
 
     </body>
