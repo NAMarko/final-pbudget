@@ -33,7 +33,7 @@ const jwtMW = exjwt({
     algorithms: ['HS256']
 });
 
-app.get('/api/signup', async (req, res) => {
+app.get('http://localhost:3000/api/signup', async (req, res) => {
     const {username, password} = res.body;
     connection.connect();
     connection.query('INSERT INTO user VALUES ("", ?, ?)', [username, password], function (error, results, fields) {
@@ -43,7 +43,7 @@ app.get('/api/signup', async (req, res) => {
     });
 }); 
 
-app.get('/api/gbudget', async (req, res) => {
+app.get('http://localhost:3000/api/gbudget', async (req, res) => {
     connection.connect();
     connection.query('SELECT * FROM budget', function (error, results, fields) {
         connection.end();
@@ -52,7 +52,7 @@ app.get('/api/gbudget', async (req, res) => {
     });
 });
 
-app.get('/api/login', async (req, res) => {
+app.get('http://localhost:3000/api/login', async (req, res) => {
     const {username, password} = res.body;
     connection.connect();
     connection.query('INSERT INTO user VALUES ("", ?, ?)', [username, password], function (error, results, fields) {
