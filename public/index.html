@@ -31,7 +31,7 @@
 
                 <div>
                     <button onclick="login()">Login</button>
-                    <button onclick="getDashboard()">Get Dashboard</button>
+                    <button onclick="getBudget()">Get Budget</button>
                     <button onclick="getSettings()">Settings</button>
                 </div>
             </main>
@@ -45,7 +45,7 @@
                 password: document.getElementById('password').value,
             };
         
-        axios.post('/api/login', data)
+        axios.post('/login', data)
             .then(res => {
                 console.log(res);
                 document.getElementById('username').value='';
@@ -53,24 +53,24 @@
                 if (res && res.data && res.data.success) {
                     token = res.data.token;
                     localStorage.setItem('jwt', token);
-                    getDashboard();
+                    getBudget();
                 }
             });
         }
         var page ="";
-        function getDashboard() {
+        function getBudget() {
             const token = localStorage.getItem('jwt');
-            axios.get('/api/dashboard', {
+            axios.get('/Budget', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             }).then(res => {
                 if (res && res.data && res.data.success) {
-                    document.querySelector('h1.row').innerHTML = 'Dashboard';
+                    document.querySelector('h1.row').innerHTML = 'Budget';
                     document.querySelector('main').innerHTML = res.data.myContent;
                 }
             });
-            history.pushState(page, "dashboard", '/dashboard');
+            history.pushState(page, "Budget", '/Budget');
         }
 
         function getSettings() {
@@ -91,7 +91,7 @@
         function onLoad() {
             const token = localStorage.getItem('jwt');
             if (token){
-            getDashboard();
+            getBudget();
             }
         }
         //onLoad();

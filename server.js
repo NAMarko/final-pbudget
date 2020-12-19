@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
     database : 'sql9382951'
 });
 
-app.get('/api/signup', async (req, res) => {
+app.get('/signup', async (req, res) => {
     const {username, password} = res.body;
     connection.connect();
     connection.query('INSERT INTO user VALUES ("", ?, ?)', [username, password], function (error, results, fields) {
@@ -21,7 +21,7 @@ app.get('/api/signup', async (req, res) => {
     });
 }); 
 
-app.get('/', async (req, res) => {
+app.get('/Budget', async (req, res) => {
     connection.connect();
     connection.query('SELECT * FROM budget', function (error, results, fields) {
         connection.end();
