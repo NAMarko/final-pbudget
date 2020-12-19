@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const port = 3000;
 
 const jwt = require('jsonwebtoken');
 const exjwt = require('express-jwt');
@@ -25,7 +26,7 @@ var connection = mysql.createConnection({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-const PORT = 3000;
+
 var page="";
 const secretKey = "my secret key";
 const jwtMW = exjwt({
