@@ -73,19 +73,19 @@
             history.pushState(page, "gbudget", '/api/gbudget');
         }
 
-        function getSettings() {
+        function getSignup() {
             const token = localStorage.getItem('jwt');
-            axios.get('/api/settings', {
+            axios.get('/api/signup', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             }).then(res => {
                 if (res && res.data && res.data.success) {
-                    document.querySelector('h1.row').innerHTML = 'Settings';
+                    document.querySelector('h1.row').innerHTML = 'Sign up';
                     document.querySelector('main').innerHTML = res.data.myContent;
                 }
             });
-            history.pushState(page, "settings", '/settings');
+            history.pushState(page, "signup", '/signup');
         }
 
         function onLoad() {
